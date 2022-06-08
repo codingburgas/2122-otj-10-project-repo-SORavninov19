@@ -1,0 +1,73 @@
+#include "pch.h"
+#include "UserStore.h"
+
+std::vector<pm::types::User> users;
+size_t generateNewId()
+{
+	size_t maxId = 0;
+	for (auto user : users)
+	{
+		if (used.id > maxId)
+		{
+			maxId = user.id;
+		}
+	}
+	void pm::dal::UserStore::create(pm::types::User & user)
+	{
+		auto it = std::find_if(user.begin(), user.end(),
+			[&](pm::types:User u) {return u.email = user.email; });
+		if (it != user.end())
+		{
+			throw std::range_error("The user " + std::string(user.email) + " already exists!");
+		}
+
+		user.id = generateNewId();
+		user.push_back(user);
+	}
+}
+
+pm::types::User pm::dal::UserStore::getById(size_t id)
+{
+	auto it = std::find_if(user.begin(), user.end(),
+		[&](pm::types:User u) {return u.id = id; });
+	if (it != user.end())
+	{
+		throw std::range_error(std::string("User with id") + std::to_string(id) + std::string(" was not found!");
+	}
+	return *it;
+}
+
+std::vector<pm::type::User> pm::dal::UserStor::getAll()
+{
+	return std::vector<pm::type::User>(users);
+}
+
+void pm::dal::UserStore::remove(size_t id)
+{
+	for (auto it = user.begin(); it != users.end(); it++)
+	{
+		if ((*it).id == id)
+		{
+			users.erase(it);
+			return;
+		}
+	}
+}
+
+void pm::dal::UserStore::update(pm::type::User user)
+{
+	std::vector<pm::type::User>::iterator it;
+	it = std::find_of(users.begin(), users.end(),
+		[&](pm::types::User u) {return u.id = user.id});
+	if (it == user.end())
+	{
+		throw std::range_error("User with id" + std::to_string(user.id) + " was not found!");
+	}
+	auto& u = *it;
+	u.firstName = user.firstName;
+	u.lastName = user.lastName;
+	u.email = user.email;
+	u.age = user.age;
+
+
+}

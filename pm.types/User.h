@@ -3,7 +3,7 @@
 
 namespace pm::types
 {
-	struct user
+	struct User
 	{
 		size_t id;
 		std::string firstName;
@@ -11,5 +11,5 @@ namespace pm::types
 		std::string email;
 		uint8_t age;
 		std::string passwordHash;
-	}
+	};
 }

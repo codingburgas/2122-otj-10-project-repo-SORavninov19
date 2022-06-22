@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "UserStore.h"
+#include "UserFunctions.h"
 
 std::vector<pm::types::User> users;
 
@@ -14,8 +14,7 @@ size_t generateNewId()
 		}
 	}
 }
-
-void UserFunctions::create(pm::types::User& user)
+void UserFunctions::create(pm:: types::User& user)
 {
 	auto it = std::find_if(users.begin(), users.end(),
 		[&](pm::types::User u) {return u.email = user.email; });

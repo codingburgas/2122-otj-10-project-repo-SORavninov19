@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <stdio.h>
+#include <time.h>
 
 namespace pm::types
 {
@@ -10,6 +12,8 @@ namespace pm::types
 		std::string lastName;
 		std::string email;
 		uint8_t age;
+		std::string dateOfCreation;
 		std::string passwordHash;
+		
 	};
 }

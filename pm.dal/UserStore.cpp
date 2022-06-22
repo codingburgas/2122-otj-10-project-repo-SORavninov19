@@ -34,7 +34,18 @@ pm::types::User UserFunctions::getById(size_t id)
 		[&](pm::types::User u) {return u.id = id; });
 	if (it != users.end())
 	{
-		throw std::string("User with id") + std::to_string(id) + std::string(" was not found!";
+		throw std::string("User with id") + std::to_string(id) + std::string(" was not found!");
+	}
+	return *it;
+}
+
+pm::types::User UserFunctions::getByEmail(std::string email)
+{
+	auto it = std::find_if(users.begin(), users.end(),
+		[&](pm::types::User u) {return u.email = email; });
+	if (it != users.end())
+	{
+		throw std::string("User with email ") + email + std::string(" was not found!");
 	}
 	return *it;
 }

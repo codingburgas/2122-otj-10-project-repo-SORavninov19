@@ -14,6 +14,5 @@ namespace pm::types
 		uint8_t age;
 		std::string dateOfCreation;
 		std::string passwordHash;
-		
 	};
 }

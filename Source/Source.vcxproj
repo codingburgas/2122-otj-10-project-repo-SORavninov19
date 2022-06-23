@@ -142,6 +142,20 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\pm.bll\pm.bll.vcxproj">
+      <Project>{f5bf2eef-bd30-46f9-ba9f-aefa3cf485cf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\pm.dal\pm.dal.vcxproj">
+      <Project>{e058b4d3-f0f6-4a23-8978-47f3b8aead54}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\pm.tools\pm.tools.vcxproj">
+      <Project>{48ab1bbc-8fcb-4d1a-8e99-f20a4d27c874}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\pm.types\pm.types.vcxproj">
+      <Project>{58219d1d-4b6b-4eb5-b08e-6ffa4de96e3a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

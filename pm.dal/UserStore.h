@@ -1,5 +1,4 @@
 #pragma once
-#include "pch.h"
 #include "../pm.types/User.h"
 #include <vector>
 struct UserFunctions

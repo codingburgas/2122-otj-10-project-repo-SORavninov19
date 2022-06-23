@@ -1,9 +1,8 @@
 #pragma once
-#include "pch.h"
 #include "../pm.types/User.h"
 #include <vector>
 
-string getCurrentTime(time_t curretTime);
+std::string getCurrentTime(time_t curretTime);
 struct UserFunctions
 {
 		void create(pm::types::User& user);

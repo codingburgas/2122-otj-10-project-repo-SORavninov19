@@ -6,7 +6,7 @@
 std::vector<pm::types::User> dataBaseOpen()
 {
 	std::vector<pm::types::User> users;
-	std::fstream file("../database/users");
+	std::fstream file("../database/users.txt");
 	if (file.is_open())
 	{
 		std::string line;
@@ -42,7 +42,9 @@ std::vector<pm::types::User> dataBaseOpen()
 					break;
 				}
 			}
+			users.push_back(oneUser);
 		}
+		return users;
 	}
 	else
 		throw "database fail to open";

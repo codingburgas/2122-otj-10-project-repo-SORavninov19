@@ -21,18 +21,12 @@
     <ClInclude Include="dataBaseAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserFunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UserStore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dataBaseAccess.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UserFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

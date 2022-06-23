@@ -3,8 +3,14 @@
 #include <vector>
 #include "../pm.types/User.h"
 
+class DataBase
+{
+	std::vector<pm::types::User> users;
+	public:
 
-std::vector<pm::types::User> dataBaseOpen();
-void dataBaseDelete();
-void dataBaseAdd();
-void dataBaseUpdate();
+	std::string fullCredential(int);
+	std::vector<pm::types::User> dataBaseOpen();
+	void dataBaseDelete(int);
+	void dataBaseAdd(pm::types::User);
+	void dataBaseUpdate(pm::types::User, int);
+};

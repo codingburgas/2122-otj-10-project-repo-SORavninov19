@@ -154,12 +154,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dataBaseAccess.h" />
-    <ClInclude Include="UserFunctions.h" />
     <ClInclude Include="UserStore.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dataBaseAccess.cpp" />
-    <ClCompile Include="UserFunctions.cpp" />
     <ClCompile Include="UserStore.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

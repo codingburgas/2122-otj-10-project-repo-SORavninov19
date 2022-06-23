@@ -3,7 +3,15 @@
 #include <string>
 #include <sstream>
 
-std::vector<pm::types::User> dataBaseOpen()
+
+std::string DataBase::fullCredential(int i)
+{
+	std::string a = " " ;
+	return stoi(users[i].id) + a + stoi(users[i].firstName) + a + stoi(users[i].lastName) + a + stoi(users[i].email) + a + stoi(users[i].age) + a + stoi(users[i].dateOfCreation) + a + users[i].passwordHash + a;
+
+}
+
+std::vector<pm::types::User> DataBase::dataBaseOpen()
 {
 	std::vector<pm::types::User> users;
 	std::fstream file("../database/users.txt");
@@ -46,6 +54,27 @@ std::vector<pm::types::User> dataBaseOpen()
 		}
 		return users;
 	}
-	else
-		throw "database fail to open";
 }
+
+void DataBase::dataBaseDelete(int id)
+{
+	std::fstream file("../database/users.txt",std::ios::trunc);
+	if (file.is_open())
+	{
+		std::string line;
+		for (int i = 0; getline(file, line); i++)
+		{
+			
+			if (i = id)
+			{
+				users.erase(users.begin() + id - 1);
+			}
+			else
+			{
+				std::string a = "|";
+				file >> users[i].id >> a >> users[i].firstName >> a >> users[i].lastName >> a >> users[i].email >> a >> users[i].age >> a >> users[i].dateOfCreation >> a >> users[i].passwordHash >> a;
+			}
+		}
+	}
+}
+

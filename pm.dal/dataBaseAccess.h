@@ -9,7 +9,7 @@ class DataBase
 	public:
 
 	std::string fullCredential(int);
-	std::vector<pm::types::User> dataBaseOpen();
+	void dataBaseOpen();
 	void dataBaseDelete(int);
 	void dataBaseAdd(pm::types::User);
 	void dataBaseUpdate(pm::types::User, int);

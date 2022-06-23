@@ -7,14 +7,14 @@
 std::string DataBase::fullCredential(int i)
 {
 	std::string a = " " ;
-	return stoi(users[i].id) + a + stoi(users[i].firstName) + a + stoi(users[i].lastName) + a + stoi(users[i].email) + a + stoi(users[i].age) + a + stoi(users[i].dateOfCreation) + a + users[i].passwordHash + a;
+	return std::to_string(users[i].id) + a + users[i].firstName + a + users[i].lastName + a + users[i].email + a + std::to_string(users[i].age) + a + users[i].dateOfCreation + a + users[i].passwordHash;
 
 }
 
-std::vector<pm::types::User> DataBase::dataBaseOpen()
+void DataBase::dataBaseOpen()
 {
-	std::vector<pm::types::User> users;
 	std::fstream file("../database/users.txt");
+
 	if (file.is_open())
 	{
 		std::string line;
@@ -26,7 +26,7 @@ std::vector<pm::types::User> DataBase::dataBaseOpen()
 			for (int i = 0; getline(ssline, word, '|'); i++)
 			{
 				switch (i%7)
-				{		
+				{
 				case 0:
 					oneUser.id = stoi(word);
 					break;
@@ -52,29 +52,30 @@ std::vector<pm::types::User> DataBase::dataBaseOpen()
 			}
 			users.push_back(oneUser);
 		}
-		return users;
 	}
 }
 
 void DataBase::dataBaseDelete(int id)
 {
-	std::fstream file("../database/users.txt",std::ios::trunc);
+	std::fstream file("../database/users.txt");
+	std::ofstream newFile("../database/newUsers.txt");
 	if (file.is_open())
 	{
 		std::string line;
 		for (int i = 0; getline(file, line); i++)
 		{
-			
-			if (i = id)
+			if (i == id)
 			{
-				users.erase(users.begin() + id - 1);
+				users.erase(users.begin() + id);
 			}
 			else
 			{
 				std::string a = "|";
-				file >> users[i].id >> a >> users[i].firstName >> a >> users[i].lastName >> a >> users[i].email >> a >> users[i].age >> a >> users[i].dateOfCreation >> a >> users[i].passwordHash >> a;
+				newFile << line;
+				newFile << '\n';
 			}
 		}
+		
 	}
 }
 

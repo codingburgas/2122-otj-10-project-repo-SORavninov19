@@ -4,10 +4,9 @@
 
 int main()
 {
-
 	DataBase users;
 	users.dataBaseOpen();
-
-
+	users.dataBaseDelete(1);
+	
 }
 

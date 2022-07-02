@@ -1,3 +1,4 @@
-1|Stefan|Ravninov|Email@gmail.com|21|now|1234
-2|Geogri|Ivanov|joeBiden@gmail.com|15|later|7532
-3|Stakat|Mehmet|stakpp@gmail.com|14|tmr|1245
+14|user|torna|3|ravninov|now|ler|1|now|1|0
+14|user|torna|3|ravninov|now|ler|1|now|1|0
+14|user|torna|3|ravninov|now|ler|1|now|1|0
+4|user|tor|3|ravninov|now|ler|1|now|1|0

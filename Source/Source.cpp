@@ -6,7 +6,7 @@ int main()
 {
 	DataBase users;
 	users.dataBaseOpen();
-	users.dataBaseDelete(1);
-	
+	pm::types::User nUser = {14,"user","torna","3","ravninov","now","ler",1,"now",1,false};
+	users.dataBaseUpdate(nUser,3);
 }
 

@@ -1,20 +1,21 @@
-#include "UserStore.h"
-
-std::vector<pm::types::User> users;
-
-size_t generateNewId()
-{
-	size_t maxId = 0;
-	for (auto user : users)
-	{
-		if (user.id > maxId)
-		{
-			maxId = user.id;
-		}
-	}
-	return maxId;
-}
-
+//#include "UserStore.h"
+//#include "dataBaseAccess.h"
+//
+//std::vector<pm::types::User> users;
+//
+//size_t generateNewId()
+//{
+//	size_t maxId = 0;
+//	for (auto user : users)
+//	{
+//		if (user.id > maxId)
+//		{
+//			maxId = user.id;
+//		}
+//	}
+//	return maxId;
+//}
+//
 //void UserFunctions::create(pm::types::User& user)
 //{
 //	auto it = std::find_if(users.begin(), users.end(),
@@ -49,39 +50,39 @@ size_t generateNewId()
 //	}
 //	return *it;
 //}
-
-std::vector<pm::types::User> UserFunctions::getAll()
-{
-	return std::vector<pm::types::User>(users);
-}
-
-void UserFunctions::remove(size_t id)
-{
-	for (auto it = users.begin(); it != users.end(); it++)
-	{
-		if ((*it).id == id)
-		{
-			users.erase(it);
-			return;
-		}
-	}
-}
-
-//void UserFunctions::update(pm::types::User user)
+//
+//std::vector<pm::types::User> UserFunctions::getAll()
 //{
-//	std::vector<pm::types::User>::iterator it;
-//	it = std::find_if(users.begin(), users.end(),
-//		[&](pm::types::User u) {return u.id = user.id; });
-//	if (it == users.end())
-//	{
-//		throw "User with id" + std::to_string(user.id) + " was not found!";
-//	}
-//	auto& u = *it;
-//	u.firstName = user.firstName;
-//	u.lastName = user.lastName;
-//	u.email = user.email;
-//	u.age = user.age;
-//
-//
+//	return std::vector<pm::types::User>(users);
 //}
 //
+//void UserFunctions::remove(size_t id)
+//{
+//	for (auto it = users.begin(); it != users.end(); it++)
+//	{
+//		if ((*it).id == id)
+//		{
+//			users.erase(it);
+//			return;
+//		}
+//	}
+//}
+//
+////void UserFunctions::update(pm::types::User user)
+////{
+////	std::vector<pm::types::User>::iterator it;
+////	it = std::find_if(users.begin(), users.end(),
+////		[&](pm::types::User u) {return u.id = user.id; });
+////	if (it == users.end())
+////	{
+////		throw "User with id" + std::to_string(user.id) + " was not found!";
+////	}
+////	auto& u = *it;
+////	u.firstName = user.firstName;
+////	u.lastName = user.lastName;
+////	u.email = user.email;
+////	u.age = user.age;
+////
+////
+////}
+////

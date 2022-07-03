@@ -1,7 +1,5 @@
 #pragma once
 #include <string>
-#include <stdio.h>
-#include <time.h>
 
 namespace pm::types
 {

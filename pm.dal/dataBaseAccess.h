@@ -6,7 +6,7 @@
 class DataBase
 {
 	public:
-	std::vector<pm::types::User> users;
+	static std::vector<pm::types::User> users;
 	std::string fullCredential(int);
 	void dataBaseOpen();
 	void dataBaseDelete(int);

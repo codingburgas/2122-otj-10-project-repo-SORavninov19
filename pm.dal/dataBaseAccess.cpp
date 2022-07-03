@@ -4,6 +4,8 @@
 #include <sstream>
 #include <iostream>
 
+std::vector<pm::types::User> DataBase::users;
+
 std::string DataBase::fullCredential(int i)
 {
 	std::string a = " " ;
@@ -107,7 +109,7 @@ void DataBase::dataBaseAdd(pm::types::User nUser)
 	std::ofstream file("../database/users.txt",std::ios::app);
 	if (file.is_open())
 	{
-		file << "\n" << nUser.id << '|'
+		file << nUser.id << '|'
 			<< nUser.level << '|'
 			<< nUser.username << '|'
 			<< nUser.firstName << '|'
@@ -117,7 +119,7 @@ void DataBase::dataBaseAdd(pm::types::User nUser)
 			<< nUser.idOfCreator << '|'
 			<< nUser.dateOfLastChange << '|'
 			<< nUser.idOfLastEditor << '|'
-			<< 0;
+			<< 0 << "\n";
 		users.push_back(nUser);
 		file.close();
 	}

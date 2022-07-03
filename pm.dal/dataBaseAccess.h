@@ -2,6 +2,10 @@
 #include <fstream>
 #include <vector>
 #include "../pm.types/User.h"
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <iostream>
 
 class DataBase
 {

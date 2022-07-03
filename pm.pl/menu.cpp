@@ -4,6 +4,7 @@ using namespace std;
 
 pm::types::User logedUser;
 DataBase db;
+DataTeams tdb;
 
 void pressAnyKey()
 {
@@ -192,6 +193,42 @@ void deleteUser()
 	db.dataBaseDelete(choice);
 	mainMenu();
 }
+
+void createTeam()
+{
+	Team nTeam;
+
+	//solves potentional getline problems
+	cin.ignore(100, '\n');
+
+	cout << "What title should the new team have?";
+	getline(cin, nTeam.title);
+	cout << endl;
+	displayUsers();
+	cout << "Which Users should be assigned to the new team?(write ID and write 0 to stop)\n";
+	string ch;
+	for(int i = 0; ch != "0"; i++)
+	{
+		cin >> ch;
+		string chs = "";
+		chs+=ch;
+		nTeam.assignedUsers.push_back(db.users[stoi(chs)]);
+	}
+
+	nTeam.id = DataTeams::teams.size() + 1;
+	nTeam.dateOfCreation = findCurrentTime().substr(0, findCurrentTime().size() - 1);
+	nTeam.dateOfLastChange = findCurrentTime().substr(0, findCurrentTime().size() - 1);
+	nTeam.idOfCreator = logedUser.id;
+	nTeam.idOfLastEditor= logedUser.id;
+	tdb.teamAdd(nTeam);
+	cout << "User added successfully!";
+
+	pressAnyKey();
+	system("cls");
+	mainMenu();
+}
+
+
 
 void displayUsers()
 {

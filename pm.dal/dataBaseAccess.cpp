@@ -1,8 +1,4 @@
 #include "dataBaseAccess.h"
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <iostream>
 
 std::vector<pm::types::User> DataBase::users;
 

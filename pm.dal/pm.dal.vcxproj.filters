@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UserStore.h">
+    <ClInclude Include="dataBaseAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dataBaseAccess.h">
+    <ClInclude Include="teams.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UserStore.cpp">
+    <ClCompile Include="dataBaseAccess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dataBaseAccess.cpp">
+    <ClCompile Include="teams.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -154,11 +154,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dataBaseAccess.h" />
-    <ClInclude Include="UserStore.h" />
+    <ClInclude Include="teams.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dataBaseAccess.cpp" />
-    <ClCompile Include="UserStore.cpp" />
+    <ClCompile Include="teams.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

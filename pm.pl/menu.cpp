@@ -218,7 +218,7 @@ void createTeam()
 	nTeam.id = DataTeams::teams.size() + 1;
 	nTeam.dateOfCreation = findCurrentTime().substr(0, findCurrentTime().size() - 1);
 	nTeam.dateOfLastChange = findCurrentTime().substr(0, findCurrentTime().size() - 1);
-	nTeam.idOfCreator = logedUser.id;
+	nTeam.creator = logedUser;
 	nTeam.idOfLastEditor= logedUser.id;
 	tdb.teamAdd(nTeam);
 	cout << "User added successfully!";
@@ -227,8 +227,110 @@ void createTeam()
 	system("cls");
 	mainMenu();
 }
+void updateTeam()
+{
+	int teamToBeChanged;
+	system("cls");
+	displayTeams();
 
+	cout << "Which Team would you like to change?\n";
+	cin >> teamToBeChanged;
 
+	bool flag = false;
+	Team nTeam = tdb.teams[teamToBeChanged - 1];
+	do
+	{
+		//solves potentional getline problems
+		cin.ignore(100, '\n');
+
+		cout << "Change Title (press Enter if you want it unchanged)";
+		char ch = _getch();
+		cout << endl;
+		if (ch != '\r')
+			getline(cin, nTeam.title);
+
+		cout << "Users assinged to this team: ";
+		for (size_t i = 0; i < nTeam.assignedUsers.size(); i++)
+		{
+			cout << nTeam.assignedUsers[i].username << " ";
+		}
+		cout << endl << "Write the username of the users that need to be removed//added (press Enter if you want it unchanged)";
+		ch = _getch();
+		cout << endl;
+		if (ch != '\r')
+		{
+			
+			string input;
+			while (true)
+			{
+				cin >> input;
+				if (input == "0")
+					break;
+				bool flager = false;
+				for (size_t i = 0; i < nTeam.assignedUsers.size(); i++)
+				{
+					if (input == nTeam.assignedUsers[i].username)
+					{
+						flager = true;
+						nTeam.assignedUsers.erase(nTeam.assignedUsers.begin() + i, nTeam.assignedUsers.begin() + i);
+						nTeam.assignedUsers.pop_back();
+						break;
+					}
+				}
+				if (!flager)
+				{
+					pm::types::User userToBeAdded;
+					for (size_t i = 0; i < db.users.size(); i++)
+					{
+						if (input == db.users[i].username)
+							userToBeAdded = db.users[i];
+					}
+
+					nTeam.assignedUsers.push_back(userToBeAdded);
+				}
+			}
+		}
+
+		flag = true;
+	} while (!flag);
+
+	nTeam.dateOfLastChange = findCurrentTime().substr(0, findCurrentTime().size() - 1);
+	nTeam.idOfLastEditor = logedUser.id;
+	tdb.teamUpdate(nTeam, teamToBeChanged);
+	cout << "Team changed!";
+
+	pressAnyKey();
+	system("cls");
+	mainMenu();
+}
+void deleteTeam()
+{
+	displayTeams();
+	cout << "Which team would you like to delete?";
+	int choice;
+	cin >> choice;
+	tdb.teamDelete(choice);
+	cout << "Team " << tdb.teams[choice - 1].title << " deleted!\n";
+	pressAnyKey();
+	mainMenu();
+}
+
+void displayTeams()
+{
+	cout << "ID | ";
+	cout << "Title | ";
+	cout << "Date of creation | ";
+	cout << "Username of creator | ";
+	cout << "Date last change | ";
+	cout << "Username of last editor | ";
+	cout << "(Assigned users) |";
+	cout << "Deleted\n";
+	for (size_t i = 0; i < tdb.teams.size(); i++)
+	{
+		cout << tdb.fullCredential(i) << endl;
+	}
+	cout << endl;
+}
 
 void displayUsers()
 {
@@ -266,7 +368,7 @@ void loginUser()
 	{
 		if (toLowerCase(username) + pass == toLowerCase(db.users[i].username) + db.users[i].passwordHash)
 		{
-			cout << "User has loged in successfully";
+			cout << "User has loged in successfully\n";
 			logedUser = db.users[i];
 			return;
 		}
@@ -284,17 +386,13 @@ void loginUser()
 	mainMenu();
 }
 
-void mainMenu()
+void userManager()
 {
-	system("cls");
-	cout << logedUser.username << " " << logedUser.level<<endl<<endl;
-
-	if (toLowerCase(logedUser.level) == "admin")
-	{
-		cout << "1. Add User\n";
-		cout << "2. Change User\n";
-		cout << "3. Delete User\n";
-	}
+	cout << "1. Add User\n";
+	cout << "2. Change User\n";
+	cout << "3. Delete User\n";
+	cout << "4. Display All Users\n";
+	cout << "5. Exit\n";
 	int choice;
 	cin >> choice;
 	switch (choice)
@@ -308,5 +406,70 @@ void mainMenu()
 	case 3:
 		deleteUser();
 		break;
+	case 4:
+		displayUsers();
+		pressAnyKey();
+		userManager();
+		break;
+	case 5:
+		system("cls");
+		mainMenu();
+		break;
+	}
+}
+
+void teamManager()
+{
+	cout << "1. Add Team\n";
+	cout << "2. Change Team\n";
+	cout << "3. Delete Team\n";
+	cout << "4. Display All Team\n";
+	cout << "5. Exit\n";
+	int choice;
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		createTeam();
+		break;
+	case 2:
+		updateTeam();
+		break;
+	case 3:
+		deleteTeam();
+		break;
+	case 4:
+		displayTeams();
+		pressAnyKey();
+		system("cls");
+		teamManager();
+		break;
+	case 5:
+		system("cls");
+		mainMenu();
+		break;
+	}
+}
+void mainMenu()
+{
+	system("cls");
+	cout << logedUser.username << " " << logedUser.level<<endl<<endl;
+	if (toLowerCase(logedUser.level) == "admin")
+	{
+		cout << "1. User Manager\n";
+		cout << "2. Team Manager\n";
+		int choice;
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			system("cls");
+			userManager();
+			break;
+		case 2:
+			system("cls");
+			teamManager();
+			break;
+		}
 	}
 }

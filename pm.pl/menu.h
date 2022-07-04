@@ -21,9 +21,14 @@ void updateUser();
 void deleteUser();
 
 void createTeam();
+void updateTeam();
 
 void displayUsers();
+void displayTeams();
+void deleteTeam();
 
 void loginUser();
 
+void userManager();
+void teamManager();
 void mainMenu();

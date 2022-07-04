@@ -8,15 +8,16 @@ std::string DataTeams::fullCredential(int i)
 	std::string fullCredit = std::to_string(teams[i].id) + a
 		+ teams[i].title + a
 		+ teams[i].dateOfCreation + a
-		+ std::to_string(teams[i].idOfCreator) + a
+		+ teams[i].creator.username + a
 		+ teams[i].dateOfLastChange + a
-		+ std::to_string(teams[i].idOfLastEditor) + a;
+		+ DataBase::users[teams[i].idOfLastEditor - 1].username + a;
 	fullCredit += '(';
-	for (size_t j = 0; j < teams[j].assignedUsers.size(); j++)
+	for (size_t j = 0; j < teams[i].assignedUsers.size() - 1; j++)
 	{
-		fullCredit = fullCredit + std::to_string(teams[i].assignedUsers[j].id) + a;
+		fullCredit = fullCredit + teams[i].assignedUsers[j].username + ',';
 	}
-	fullCredit += ')';
+	fullCredit = fullCredit + teams[i].assignedUsers[teams[i].assignedUsers.size() - 1].username;
+	fullCredit += ') ';
 	fullCredit += std::to_string(teams[i].deleted);
 	return fullCredit;
 }

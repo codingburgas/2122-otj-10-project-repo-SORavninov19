@@ -8,9 +8,8 @@ int main()
 	DataTeams team;
 	users.dataBaseOpen();
 	team.teamsDataBaseOpen();
-	/*loginUser();
-	mainMenu();*/
-	createTeam();
+	loginUser();
+	mainMenu();
 
 
 }

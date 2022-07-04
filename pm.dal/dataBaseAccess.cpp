@@ -13,8 +13,7 @@ std::string DataBase::fullCredential(int i)
 		+ users[i].dateOfCreation + a
 		+ users[i].passwordHash + a
 		+ users[i].dateOfLastChange + a
-		+ std::to_string(users[i].idOfLastEditor) + a
-		+ std::to_string(users[i].deleted);
+		+ std::to_string(users[i].idOfLastEditor) + a;
 }
 void DataBase::dataBaseOpen()
 {

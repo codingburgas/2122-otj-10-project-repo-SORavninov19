@@ -17,8 +17,7 @@ std::string DataTeams::fullCredential(int i)
 		fullCredit = fullCredit + teams[i].assignedUsers[j].username + ',';
 	}
 	fullCredit = fullCredit + teams[i].assignedUsers[teams[i].assignedUsers.size() - 1].username;
-	fullCredit += ') ';
-	fullCredit += std::to_string(teams[i].deleted);
+	fullCredit += ") ";
 	return fullCredit;
 }
 void DataTeams::teamsDataBaseOpen()
@@ -164,6 +163,7 @@ void DataTeams::teamUpdate(Team updateLine, int id)
 		file.close();
 		remove("../database/teams.txt");
 		int a = rename("../database/newTeams.txt", "../database/teams.txt");
+		DataTeams::teams[id - 1] = updateLine;
 	}
 }
 

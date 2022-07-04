@@ -269,7 +269,7 @@ void updateTeam()
 				bool flager = false;
 				for (size_t i = 0; i < nTeam.assignedUsers.size(); i++)
 				{
-					if (input == nTeam.assignedUsers[i].username)
+					if (toLowerCase(input) == toLowerCase(nTeam.assignedUsers[i].username))
 					{
 						flager = true;
 						nTeam.assignedUsers.erase(nTeam.assignedUsers.begin() + i, nTeam.assignedUsers.begin() + i);
@@ -323,10 +323,10 @@ void displayTeams()
 	cout << "Username of creator | ";
 	cout << "Date last change | ";
 	cout << "Username of last editor | ";
-	cout << "(Assigned users) |";
-	cout << "Deleted\n";
+	cout << "(Assigned users) \n\n";
 	for (size_t i = 0; i < tdb.teams.size(); i++)
 	{
+		if (!tdb.teams[i].deleted)
 		cout << tdb.fullCredential(i) << endl;
 	}
 	cout << endl;
@@ -342,10 +342,10 @@ void displayUsers()
 	cout << "Password | ";
 	cout << "Id of creator | ";
 	cout << "Date last change | ";
-	cout << "Id of last editor | ";
-	cout << "Deleted\n";
+	cout << "Id of last editor \n\n";
 	for (size_t i = 0; i < db.users.size(); i++)
 	{
+		if(!db.users[i].deleted)
 		cout << db.fullCredential(i) << endl;
 	}
 	cout << endl;
@@ -409,6 +409,7 @@ void userManager()
 	case 4:
 		displayUsers();
 		pressAnyKey();
+		system("cls");
 		userManager();
 		break;
 	case 5:
@@ -417,7 +418,6 @@ void userManager()
 		break;
 	}
 }
-
 void teamManager()
 {
 	cout << "1. Add Team\n";
@@ -450,6 +450,7 @@ void teamManager()
 		break;
 	}
 }
+
 void mainMenu()
 {
 	system("cls");

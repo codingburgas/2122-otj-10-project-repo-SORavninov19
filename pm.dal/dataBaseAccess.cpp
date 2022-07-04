@@ -15,6 +15,7 @@ std::string DataBase::fullCredential(int i)
 		+ users[i].dateOfLastChange + a
 		+ std::to_string(users[i].idOfLastEditor) + a;
 }
+
 void DataBase::dataBaseOpen()
 {
 	std::fstream file("../database/users.txt");

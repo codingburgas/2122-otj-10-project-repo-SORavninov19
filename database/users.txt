@@ -1,5 +1,5 @@
-1|admin|admin|admin|admin|0|adminpass|1|0|1|0
-2|admin|stefan|stefan|ravnino|Sat Jul  2 17:30:06 2022|1234|1|Sat Jul  2 17:30:06 2022|1|1
+1|admin|admin|admin|admin|Sat Jul  2 17:30:06 2022|adminpass|1|Sat Jul  2 17:30:06 2022|1|0
+2|admin|stefan|stefan|ravnino|Sat Jul  2 17:30:06 2022|hihihi|1|Tue Jul  5 09:26:31 2022|2|0
 3|admin|Pamela|Pamela|Dinkova|Sat Jul  2 20:13:28 2022|mega|6|Sat Jul  2 20:13:28 2022|6|0
 4|user|hunty|nikola|peshev|Sat Jul  2 20:16:31 2022|hihiha|6|Sat Jul  2 20:16:31 2022|6|0
 5|admin|Ivan|Ivan|Mihailov|Sun Jul  3 12:06:12 2022|12345|2|Sun Jul  3 12:06:12 2022|2|0
